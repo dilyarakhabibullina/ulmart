@@ -1,10 +1,8 @@
 package ru.itpark.repository;
-
 import ru.itpark.domain.Product;
-
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+
 
 
 public class Repository {
@@ -19,18 +17,21 @@ public class Repository {
         products.add(product);
     }
 
+
+    public void addAll(Collection<Product> products, Product product) {
+        this.products.addAll(products);
+        //добавление всех элементов через коллекцию
+    }
+
     public Collection<Product> getAllProducts() {
         return products;
     }
 
-//    public Collection<Product> removeById(Product product) {
-//        List <Product> removedProducts =new ArrayList<>();
-//        long removingId = 2;
-//        removedProducts.removeIf(o -> product.getId() == removingId);
-//        return removedProducts;
-//
-//    }
-
-
-
+    @Override
+    public String toString() {
+        return "Repository{" +
+                "products=" + products +
+                ", nextId=" + nextId +
+                '}';
+    }
 }

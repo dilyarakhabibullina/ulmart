@@ -6,11 +6,7 @@ import ru.itpark.domain.Product;
 import ru.itpark.repository.Repository;
 import ru.itpark.service.ProductService;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
+import java.util.*;
 
 
 public class Main {
@@ -18,37 +14,27 @@ public class Main {
     private static ProductService service;
 
     public static void main(String[] args) {
-        List<Product> product = new ArrayList<>();
-        product.add(new Product(1, "someproduct", "unknown", 3_000, true));
-        product.add(new Dress(5, "dress Dior", "greate", 190_000, true, 4, "blue"));
-        product.add(new Oven(3, "micriwave", "awful", 5_000, false, 4, 600));
-        product.add(new Oven(4, "micriwave", "not bad", 7_000, true, 400, 800));
-        product.add(new Dress(2, "dress", "nice", 3, true, 1, "green"));
-        product.add(new Dress(6, "longsleeve dress", "nice", 4_000, true, 1, "green"));
-        long removingId = 3;
-        product.removeIf(o -> o.getId() == removingId);
-        System.out.println(product);
+        final ProductService service = new ProductService(new Repository());
+        Repository repository = new Repository();
+        service.add(new Product(0, "someproduct", "unknown", 3_000, true));
+        service.add(new Dress(0, "dress Dior", "greate", 190_000, true, 4, "blue"));
+        service.add(new Oven(0, "panasonic micriwave oven", "awful", 5_000, false, 4, 600));
+        service.add(new Oven(0, "sumsung micriwave oven", "not bad", 7_000, true, 400, 800));
+        service.add(new Dress(0, "longsleeve dress", "nice", 4_000, true, 1, "green"));
+        service.add(new Dress(0, "dress", "nice", 5_500, true, 2, "red"));
 
-
-
-        //Я хочу вызвать метод searchByName из класса ProductService. Почему вот на этой строке выбрасывается nullpointerexception?
-          //  System.out.println(service.searchByName("ress"));
-
-        //Вот этот кусок кода работает!
-        List<Product> result = new ArrayList<>();
-
-        for (Product product1 : product) {
-            if (product1.getName().contains("ress")) {
-                result.add(product1);
-
-            }}
-        Collections.sort(result, (o1, o2) -> o1.getId() < o2.getId() ? -1 : o1.getId()==o2.getId() ? 0:1);
-        System.out.println(result);
-
-//            class ItemSearchByNameComparator implements Comparator<Product> {
-//                public int compare(Product o1, Product o2) {
-//                    return (int) (o1.getId() - o2.getId());
-//                }
+        System.out.println(service);
+        System.out.println(service.removeById());
+        System.out.println(service.searchByPrice());
+        System.out.println(service.getSortedByPrice());
+        //System.out.println(service.getSortedBy(new HouseByPriceDescComparator()));
+        System.out.println(service.getSortedBy(new Comparator<Product>() {
+            @Override
+            public int compare(Product o1, Product o2) {
+                return o1.getName().compareToIgnoreCase(o2.getName());
             }
-        }
+        }));
+
+    }
+}
 
