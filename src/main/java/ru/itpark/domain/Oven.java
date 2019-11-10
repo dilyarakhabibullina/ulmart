@@ -16,8 +16,8 @@ public class Oven extends Product {
         this.power = power;
     }
 
-    public Oven(int id, String name, String description, int price, boolean isAvailable, int capacity, int power) {
-        super(id, name, description, price, isAvailable);
+    public Oven(int id, String name, String description, int price, boolean isAvailable, int rate, int capacity, int power) {
+        super(id, name, description, price, isAvailable, rate);
         this.capacity = capacity;
         this.power = power;
     }
@@ -26,7 +26,7 @@ public class Oven extends Product {
     public String toString() {
         return "Oven{" + " id=" + getId() + ", name =" + getName()+  ", description=" + getDescription() + ", price="+ getPrice()
 +                ", capacity=" + capacity +
-                ", power=" + power +
+                ", power=" + power +", rate="+ getRate()+
                 '}';
     }
 }

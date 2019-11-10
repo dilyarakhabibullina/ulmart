@@ -16,8 +16,8 @@ public class Dress extends Product {
         this.color = color;
     }
 
-    public Dress(int id, String name, String description, int price, boolean isAvailable, int size, String color) {
-        super(id, name, description, price, isAvailable);
+    public Dress(int id, String name, String description, int price, boolean isAvailable, int rate, int size, String color) {
+        super(id, name, description, price, isAvailable, rate);
         this.size = size;
         this.color = color;
     }
@@ -27,7 +27,7 @@ public class Dress extends Product {
         return "Dress{"+ "id=" + getId() + ", name=" + getName()+  ", description=" + getDescription() + ", price="+ getPrice()
                 +
                 ", size=" + size +
-                ", color='" + color + '\'' +
+                ", color='" + color + ", rate="+ getRate()+'\'' +
                 '}';
     }
 }

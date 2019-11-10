@@ -13,6 +13,7 @@ public class Product {
     private String description;
     private int price;
     private boolean isAvailable;
+    private int rate;
 
     @Override
     public String toString() {
@@ -22,6 +23,7 @@ public class Product {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", isAvailable=" + isAvailable +
+                ", rate=" + rate +
                 '}';
     }
 }

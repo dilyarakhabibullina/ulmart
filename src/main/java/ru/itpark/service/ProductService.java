@@ -38,7 +38,11 @@ public class ProductService implements Comparator {
         result.sort(comparator);
         return result;
     }
-
+    public List<Product> getSortedByRate(Comparator<Product> comparator) {
+        List<Product> result = new LinkedList<>(repository.getAllProducts());
+        result.sort(comparator);
+        return result;
+    }
     public List<Product> searchByName(String text) {
         List<Product> product = new ArrayList<>();
         for (Product product1 : repository.getAllProducts()) {
@@ -101,26 +105,8 @@ public class ProductService implements Comparator {
     public int compare(Object o1, Object o2) {
         return 0;
     }
-
 }
 
-//            @Override
-//            public String toString () {
-//                return "ProductService{" +
-//                        "repository=" + repository +
-//                        ", product=" + product +
-//                        '}';
-//            }
-//
-//}
-
-//    public List<Product> searchByName() {
-//        ArrayList<Product> result = new ArrayList<>();
-//        for (Product item : items) {
-//            if (item.getName().contains("ress")) {
-//                result.add(item);
-//            }
-//
 
 
 
