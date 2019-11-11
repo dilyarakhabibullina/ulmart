@@ -1,6 +1,5 @@
 package ru.itpark;
 
-import ru.itpark.comparator.DescComparator;
 import ru.itpark.domain.Dress;
 import ru.itpark.domain.Oven;
 import ru.itpark.domain.Product;
@@ -11,12 +10,9 @@ import java.util.*;
 
 
 public class Main {
-    private static Repository repository;
-    private static ProductService service;
 
     public static void main(String[] args) {
         final ProductService service = new ProductService(new Repository());
-        Repository repository = new Repository();
         service.add(new Product(0, "someproduct", "unknown", 3_000, true, 100));
         service.add(new Dress(0, "dress Dior", "greate", 190_000, true, 450, 200, "blue"));
         service.add(new Oven(0, "panasonic microwave oven", "awful", 5_000, false, 400, 600, 1000));
@@ -29,19 +25,9 @@ public class Main {
         System.out.println(service.searchByPrice(4000, 5500));
         System.out.println(service.searchByName("micro"));
         System.out.println(service.getSortedByPrice());
-        System.out.println(service.getSortedBy(new DescComparator()));
-        System.out.println(service.getSortedByRate(new Comparator<Product>() {
-            @Override
-            public int compare(Product o1, Product o2) {
-                return o1.getRate() - o2.getRate();
-            }
-        }));
-        System.out.println(service.getSortedBy(new Comparator<Product>() {
-            @Override
-            public int compare(Product o1, Product o2) {
-                return o1.getName().compareToIgnoreCase(o2.getName());
-            }
-        }));
+        System.out.println(service.getSortedBy((o1, o2) -> -(o1.getPrice() - o2.getPrice())));
+        System.out.println(service.getSortedByRate((o1, o2) -> o1.getRate() - o2.getRate()));
+        System.out.println(service.getSortedBy((o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName())));
 
     }
 }

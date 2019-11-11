@@ -1,8 +1,9 @@
 package ru.itpark.repository;
+
 import ru.itpark.domain.Product;
+
 import java.util.ArrayList;
 import java.util.Collection;
-
 
 
 public class Repository {
@@ -20,7 +21,6 @@ public class Repository {
 
     public void addAll(Collection<Product> products, Product product) {
         this.products.addAll(products);
-        //добавление всех элементов через коллекцию
     }
 
     public Collection<Product> getAllProducts() {
