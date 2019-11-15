@@ -42,9 +42,9 @@ public class ProductService implements Comparator {
 
     public List<Product> searchByName(String text) {
         List<Product> product = new ArrayList<>();
-        for (Product product1 : repository.getAllProducts()) {
-            if (product1.getName().contains(text)) {
-                product.add(product1);
+        for (Product requiredProduct : repository.getAllProducts()) {
+            if (requiredProduct.getName().contains(text)) {
+                product.add(requiredProduct);
                 product.sort((o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName()));
             }
         }
@@ -71,9 +71,9 @@ public class ProductService implements Comparator {
 
     public List<Product> searchByCategory() {
         List<Product> listByCategory = new ArrayList<>();
-        for (Product product1 : repository.getAllProducts()) {
-            if (product1 instanceof Oven) {
-                listByCategory.add(product1);
+        for (Product requiredProduct : repository.getAllProducts()) {
+            if (requiredProduct instanceof Oven) {
+                listByCategory.add(requiredProduct);
                 listByCategory.sort((o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName()));
             }
         }
