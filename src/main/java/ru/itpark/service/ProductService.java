@@ -6,7 +6,7 @@ import ru.itpark.repository.Repository;
 
 import java.util.*;
 
-public class ProductService implements Comparator {
+public class ProductService {
 
     private final Repository repository;
 
@@ -78,11 +78,6 @@ public class ProductService implements Comparator {
             }
         }
         return listByCategory;
-    }
-
-    @Override
-    public int compare(Object o1, Object o2) {
-        return 0;
     }
 }
 
