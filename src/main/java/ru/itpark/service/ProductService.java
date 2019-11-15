@@ -24,8 +24,6 @@ public class ProductService implements Comparator {
         repository.addProduct(product);
     }
 
-    private Collection<Product> product = new ArrayList<>();
-
     public List<Product> getSortedByPrice() {
         return getSortedBy((o1, o2) -> o1.getPrice() - (o2.getPrice()));
     }
