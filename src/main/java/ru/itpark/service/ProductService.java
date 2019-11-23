@@ -45,10 +45,9 @@ public class ProductService {
         for (Product requiredProduct : repository.getAllProducts()) {
             if (requiredProduct.getName().contains(text)) {
                 product.add(requiredProduct);
-
             }
-            product.sort((o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName()));
         }
+        product.sort((o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName()));
         return product;
     }
 
@@ -59,8 +58,9 @@ public class ProductService {
                 resultByPrice.add(house);
 
             }
-            resultByPrice.sort((o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName()));
+
         }
+        resultByPrice.sort((o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName()));
         return resultByPrice;
     }
 
@@ -77,8 +77,8 @@ public class ProductService {
             if (requiredProduct instanceof Oven) {
                 listByCategory.add(requiredProduct);
             }
-            listByCategory.sort((o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName()));
         }
+        listByCategory.sort((o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName()));
         return listByCategory;
 
     }
